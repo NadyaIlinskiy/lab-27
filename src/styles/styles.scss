@@ -17,7 +17,7 @@ body {
 .my-text-primary{
     color: $my-text-primary;
 }
-  p, label {
+ label {
       padding: $spacer !important; 
     } 
     h1, h3, h5{
@@ -28,5 +28,8 @@ body {
     }
     .green{
         color:green;
+    }
+    p{
+         margin: 80px;
     }
 }

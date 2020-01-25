@@ -12,7 +12,7 @@ function Forms(props) {
             if (val.type === "textarea") {
                 formInputs.push(
                     <div className="form-group" key={ind}>
-                        <h5 class="green"> <label htmlFor={val.id}>{val.label}:</label></h5>
+                        <h5 className="green"> <label htmlFor={val.id}>{val.label}:</label></h5>
                         <textarea className="form-control" rows="5" id={val.id} />
                     </div>
                 );
@@ -41,7 +41,7 @@ function Forms(props) {
         for (let i = 0; i < e.target.length; i++) {        
            props.dispatch({
                 type: "FORM_CHANGE",
-                data: e.target[i].id.value ? e.target[i].id.value : "null",
+                data: e.target[i].value ? e.target[i].value : "null",
                 id: e.target[i].id
                 });
         }
