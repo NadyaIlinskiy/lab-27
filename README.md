@@ -1,7 +1,7 @@
 # Lab-27  - Dynamic Forms
 
-* [Code SendBox](https://codesandbox.io/s/hopeful-hofstadter-z2tsq)
-* [Netlify](https://csb-z2tsq.netlify.com)
+* [Code SendBox](https://codesandbox.io/s/tender-napier-5wfn7)
+* [Netlify](https://csb-5wfn7.netlify.com)
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app), which provides a simple way to start React projects with no build configuration needed.
 
