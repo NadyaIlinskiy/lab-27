@@ -1,9 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-function App(props) {
+function JsonForm (props) {
     let formInputs = [];
 
     if (props.jsonObj.inputs && props.jsonObj.inputs.length)
@@ -14,7 +12,7 @@ function App(props) {
         });
 
     return (
-        <div className='App'>
+        <div>
             {props.isValid ? <p>VALID JSON!</p> : <p>INVALID JSON!</p>}
             <textarea
                 id='json-txt'
@@ -38,4 +36,4 @@ const mstp = state => ({
     jsonObj: state.json.jsonObj,
 });
 
-export default connect(mstp)(App);
+export default connect(mstp)(JsonForm);
