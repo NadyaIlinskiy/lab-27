@@ -1,0 +1,18 @@
+@import 'variables';
+
+@mixin format-box() {
+    padding: $spacing;
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    text-align: center;
+}
+
+@mixin highlight(){
+    text-decoration: double;
+    color: $theme-color;
+}
+
+@mixin padContainer($pad, $mar){
+    padding: $pad;
+    margin: $mar;
+}

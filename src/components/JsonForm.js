@@ -4,18 +4,20 @@ import { connect } from "react-redux";
 function JsonForm (props) {
     let formInputs = [];
 
-    if (props.jsonObj.inputs && props.jsonObj.inputs.length)
-        props.jsonObj.inputs.forEach((val, ind) => {
+    if (props.jsonObj.forms && props.jsonObj.forms.length)
+        props.jsonObj.forms.forEach((val, ind) => {
             formInputs.push(
-                <div key={ind}>Found Input of type {val.type}</div>,
+                <div key={ind}><h5 className="green">Found Form of type {val.type}</h5></div>,
             );
         });
 
     return (
-        <div>
-            {props.isValid ? <p>VALID JSON!</p> : <p>INVALID JSON!</p>}
+        <div><h1>Add your Form!</h1>
+            {props.isValid ? <h3 className="green">VALID JSON!</h3> : <h3 className="red">INVALID JSON!</h3>}
             <textarea
-                id='json-txt'
+                id='txt'
+                className="form-control"
+                rows="17"
                 value={props.jsonTxt}
                 onChange={e => {
                     props.dispatch({

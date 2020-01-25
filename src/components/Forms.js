@@ -6,46 +6,13 @@ function Forms(props) {
     let formInputs = [];
     let buttons = [];
 
-    if (props.json.jsonObj && props.json.jsonObj.inputs) {
-        props.json.jsonObj.inputs.forEach((val, ind) => {
-            if (val.type === "text") {
-                formInputs.push(
-                    <div className="input-group mb-2" key={ind}>
-                        <div className="input-group-prepend">
-                            <span className="input-group-text" id="basic-addon1">
-                                {val.label}
-                            </span>
-                        </div>
-
-                        <input
-                            className="formInput form-control"
-                            aria-describedby="basic-addon1"
-                            type={val.type}
-                            id={val.id}
-                        />
-                    </div>
-                );
-            }
-
-            if (val.type === "checkbox") {
-                formInputs.push(
-                    <div className="form-check form-check-inline" key={ind}>
-                        <input
-                            className="form-check-input formCheckbox"
-                            id={val.id}
-                            type={val.type}
-                        />
-                        <label className="form-check-label" htmlFor={val.label}>
-                            {val.label}
-                        </label>
-                    </div>
-                );
-            }
-
+    if (props.json.jsonObj && props.json.jsonObj.forms) {
+        props.json.jsonObj.forms.forEach((val, ind) => {
+          
             if (val.type === "textarea") {
                 formInputs.push(
                     <div className="form-group" key={ind}>
-                        <label htmlFor={val.id}>{val.label}:</label>
+                        <h5 class="green"> <label htmlFor={val.id}>{val.label}:</label></h5>
                         <textarea className="form-control" rows="5" id={val.id} />
                     </div>
                 );
@@ -71,28 +38,19 @@ function Forms(props) {
 
     function submit(e) {
         e.preventDefault();
-        for (let i = 0; i < e.target.length; i++) {
-            if (e.target[i].type === "text" || e.target[i].type === "textarea") {
-                props.dispatch({
-                    type: "FORM_CHANGE",
-                    data: e.target[i].id.value ? e.target[i].id.value : "null",
-                    id: e.target[i].id
+        for (let i = 0; i < e.target.length; i++) {        
+           props.dispatch({
+                type: "FORM_CHANGE",
+                data: e.target[i].id.value ? e.target[i].id.value : "null",
+                id: e.target[i].id
                 });
-            }
-
-            if (e.target[i].type === "checkbox") {
-                props.dispatch({
-                    type: "FORM_CHANGE",
-                    data: e.target[i].checked.toString(),
-                    id: e.target[i].id
-                });
-            }
         }
     }
 
+
     return (
         <div>
-            {props.json.jsonObj.title ? <h1>{props.json.jsonObj.title}</h1> : ""}
+            {props.json.jsonObj.title ? <h1>{props.json.jsonObj.title}</h1> : <h1>"Dynamic Forms!"</h1>}
             <form onSubmit={submit}>
                 {formInputs}
                 {buttons}

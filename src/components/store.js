@@ -3,9 +3,23 @@ import thunk from 'redux-thunk';
 
 // JSON RELATED REDUCER
 
+const FormPlaceholder = {
+    title: "Dynamic Forms!",
+    forms: [
+    {
+        type: "textarea",
+        label: "Tell us about yourself",
+        id: "txt"
+    }
+    ],
+    buttons: [
+        { type: "submit", label: "Push Me", id: "btn" }
+    ]
+};
+
 const jsonInit = {
-    jsonTxt: '{}',
-    jsonObj: {},
+    jsonTxt: JSON.stringify(FormPlaceholder, undefined, 4),
+    jsonObj: FormPlaceholder,
     isValid: true,
 };
 
@@ -41,7 +55,17 @@ const jsonReducer = (state = jsonInit, action) => {
 const formInit = {};
 
 const formReducer = (state = formInit, action) => {
-    return state;
+    let newState = { ...state };
+
+    switch (action.type) {
+        case "FORM_CHANGE":
+            newState[action.id] = action.data;
+            break;
+        default:
+            break;
+    }
+
+    return newState;
 };
 
 // combine reducers
